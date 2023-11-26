@@ -20,6 +20,8 @@ const WeatherInformation = ({ climate }) => {
     }
   };
 
+  console.log(climate)
+
   return (
     <article className="text-center ">
       <h3>

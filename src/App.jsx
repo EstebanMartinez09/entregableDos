@@ -40,7 +40,7 @@ function App() {
   return (
     <main
       className={` text-white h-screen flex items-center justify-center ${
-        climate ? getBackgroundImage(climate.weather[0].icon) : ""
+        climate ? getBackgroundImage(climate?.weather[0].icon) : ""
       } bg-cover bg-center`}
     >
       {climate ? <WeatherInformation climate={climate} /> : "...cargando"}
