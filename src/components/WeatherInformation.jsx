@@ -33,7 +33,7 @@ const WeatherInformation = ({ climate }) => {
             {capital(climate.weather[0].description)}
           </h3>
 
-          <span className="text-[80.69px]">
+          <span className="text-[80.69px] font-light">
             {temperature}°{unit}
           </span>
 
@@ -47,12 +47,12 @@ const WeatherInformation = ({ climate }) => {
         </section>
 
         {/* seccion: Detalles adicionales del clima */}
-        <section className="flex bg-custom-gray  justify-center gap-4 rounded-3xl py-[10px] px-[25px] md:flex-col md:gap-[20px] md:py-[25px] md:px-[15px]">
+        <section className="flex bg-custom-gray  justify-center gap-4 rounded-3xl py-[10px] px-[25px] md:flex-col md:gap-[20px] md:py-[30px] md:px-[15px]">
           <div className="flex justify-between items-center ">
             <div>
               <img src="/svg-parametros/velocidad.svg" alt="" />
             </div>
-            <span className="mx-auto">{climate.wind.speed} m/s</span>
+            <span className="mx-auto font-bold">{climate.wind.speed} m/s</span>
           </div>
 
           <div className="h-[75px] w-[3px] bg-gray-500 opacity-50 rounded-xl md:h-[3px] md:w-[90px] "></div>
@@ -61,7 +61,7 @@ const WeatherInformation = ({ climate }) => {
             <div>
               <img src="/svg-parametros/humedad.svg" alt="" />
             </div>
-            <span className="mx-auto">{climate.main.humidity} %</span>
+            <span className="mx-auto font-bold">{climate.main.humidity} %</span>
           </div>
 
           <div className="h-[75px] w-[3px] bg-gray-500 opacity-50 rounded-xl md:h-[3px] md:w-[90px] "></div>
@@ -70,7 +70,7 @@ const WeatherInformation = ({ climate }) => {
             <div className="">
               <img src="/svg-parametros/presion.svg" alt="" />
             </div>
-            <span className="mx-auto">{climate.main.pressure} hPa</span>
+            <span className="mx-auto font-bold">{climate.main.pressure} hPa</span>
           </div>
         </section>
       </div>
