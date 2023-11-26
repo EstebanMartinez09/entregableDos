@@ -26,7 +26,7 @@ const WeatherInformation = ({ climate }) => {
         {climate.name}, {climate.sys.country}
       </h3>
 
-      <div className="flex flex-col gap-4 ">
+      <div className="flex flex-col gap-4 md:flex-row">
         {/* seccion: Temperatura, Ambiente y logo */}
         <section className="bg-custom-gray pt-[30px] pb-[30px] pl-[25px] pr-[25px] rounded-3xl grid grid-cols-[70%,30%] items-center gap-2">
           <h3 className="col-span-2 " >
@@ -47,26 +47,30 @@ const WeatherInformation = ({ climate }) => {
         </section>
 
         {/* seccion: Detalles adicionales del clima */}
-        <section className="flex bg-custom-gray items-center justify-center gap-4 rounded-3xl pt-[30px] pb-[30px] pl-[25px] pr-[25px]">
-          <div className="flex gap-2 ">
+        <section className="flex bg-custom-gray  justify-center gap-4 rounded-3xl py-[10px] px-[25px] md:flex-col md:gap-[20px] md:py-[25px] md:px-[15px]">
+          <div className="flex justify-between items-center  w-[94px]">
             <div>
               <img src="/svg-parametros/velocidad.svg" alt="" />
             </div>
-            <span>{climate.wind.speed} m/s</span>
+            <span className="mx-auto">{climate.wind.speed} m/s</span>
           </div>
 
-          <div className="flex gap-2 ">
+          <div className="h-[75px] w-[3px] bg-gray-500 opacity-50 rounded-xl md:h-[3px] md:w-[90px] "></div>
+
+          <div className="flex justify-between items-center  w-[94px]">
             <div>
               <img src="/svg-parametros/humedad.svg" alt="" />
             </div>
-            <span>{climate.main.humidity} %</span>
+            <span className="mx-auto">{climate.main.humidity} %</span>
           </div>
 
-          <div className="flex gap-2 ">
+          <div className="h-[75px] w-[3px] bg-gray-500 opacity-50 rounded-xl md:h-[3px] md:w-[90px] "></div>
+
+          <div className=" flex justify-between items-center w-[94px]">
             <div className="">
               <img src="/svg-parametros/presion.svg" alt="" />
             </div>
-            <span>{climate.main.pressure} hPa</span>
+            <span className="mx-auto">{climate.main.pressure} hPa</span>
           </div>
         </section>
       </div>
