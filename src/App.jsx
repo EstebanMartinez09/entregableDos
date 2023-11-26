@@ -59,7 +59,7 @@ function App() {
 
   return (
     <main
-      className={` text-white h-screen flex items-center justify-center ${bagraunds[climate?.weather[0].icon]} bg-cover bg-center`}
+      className={` text-black h-screen flex items-center justify-center ${bagraunds[climate?.weather[0].icon]} bg-cover bg-center`}
     >
       {climate ? <WeatherInformation climate={climate} /> : "...cargando"}
     </main>
