@@ -6,6 +6,8 @@ import es from "i18n-iso-countries/langs/es.json";
 import bagraunds from "./utils/backgrounds";
 import HandleError from "./components/HandleError";
 import Loading from "./components/Loading";
+import { CSSTransition, SwitchTransition } from 'react-transition-group';
+
 
 countries.registerLocale(es);
 
@@ -48,15 +50,26 @@ function App() {
         error ? 'bg-[url(/bagraunds/error.jpg)] bg-cover bg-center text-white ' : bagraunds[climate?.weather[0].icon]
       } bg-cover bg-center`}
     >
-      {error ? (
-        <HandleError error={error} />
-      ) : climate ? (
-        <WeatherInformation climate={climate} />
-      ) : (
-        <Loading />
-      )}
+      <SwitchTransition>
+        <CSSTransition
+          key={error ? "HandleError" : climate ? "WeatherInformation" : "Loading"}
+          addEndListener={(node, done) => {
+            node.addEventListener("transitionend", done, false);
+          }}
+          classNames='fade'
+        >
+          {error ? (
+            <HandleError error={error} />
+          ) : climate ? (
+            <WeatherInformation climate={climate} />
+          ) : (
+            <Loading />
+          )}
+        </CSSTransition>
+      </SwitchTransition>
     </main>
   );
+  
 }
 
 export default App;
