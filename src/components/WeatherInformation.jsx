@@ -21,7 +21,7 @@ const WeatherInformation = ({ climate }) => {
   };
 
   return (
-    <article className="text-center flex flex-col items-center justify-center gap-7 p-[3%]">
+    <article className="text-center flex flex-col items-center justify-center gap-7 p-[3%] select-none">
       <h3 className="font-bold text-xl bg-gradient-to-tr from-[#00c6ff] to-[#0072ff] text-transparent bg-clip-text">
         {climate.name}, {climate.sys.country}
       </h3>
