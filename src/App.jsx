@@ -5,6 +5,7 @@ import countries from "i18n-iso-countries";
 import es from "i18n-iso-countries/langs/es.json";
 import bagraunds from "./utils/backgrounds";
 import HandleError from "./components/HandleError";
+import Loading from "./components/Loading";
 
 countries.registerLocale(es);
 
@@ -52,7 +53,7 @@ function App() {
       ) : climate ? (
         <WeatherInformation climate={climate} />
       ) : (
-        "...cargando"
+        <Loading />
       )}
     </main>
   );
