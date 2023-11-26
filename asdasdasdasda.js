@@ -67,40 +67,67 @@
 
 
 
-import { useState } from "react";
+// import { useState } from "react";
 
-function App() {
+// function App() {
   
-  const [error, setError] = useState(null);
+//   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(success, handleError);
-  }, []);
+//   useEffect(() => {
+//     navigator.geolocation.getCurrentPosition(success, handleError);
+//   }, []);
 
-  const handleError = (err) => {
-    console.warn(`ERROR(${err.code}): ${err.message}`);
-    setError(err.message);
-  };
+//   const handleError = (err) => {
+//     console.warn(`ERROR(${err.code}): ${err.message}`);
+//     setError(err.message);
+//   };
 
-  // ... el resto de tu código ...
+//   // ... el resto de tu código ...
 
-  return (
-    <main
-      className={` text-black h-screen flex items-center justify-center ${
-        bagraunds[climate?.weather[0].icon]
-      } bg-cover bg-center`}
-    >
-      {error ? (
-        <div>{error}</div>
-      ) : climate ? (
-        <WeatherInformation climate={climate} />
-      ) : (
-        "...cargando"
-      )}
-    </main>
-  );
-}
+//   return (
+//     <main
+//       className={` text-black h-screen flex items-center justify-center ${
+//         bagraunds[climate?.weather[0].icon]
+//       } bg-cover bg-center`}
+//     >
+//       {error ? (
+//         <div>{error}</div>
+//       ) : climate ? (
+//         <WeatherInformation climate={climate} />
+//       ) : (
+//         "...cargando"
+//       )}
+//     </main>
+//   );
+// }
 
-export default App;
+// export default App;
+
+return (
+  <main
+    className={` text-black h-screen flex items-center justify-center ${
+      error ? 'bg-[url(/bagraunds/error.jpg)] bg-cover bg-center text-white ' : bagraunds[climate?.weather[0].icon]
+    } bg-cover bg-center`}
+  >
+    <SwitchTransition>
+      <CSSTransition
+        key={error ? "HandleError" : climate ? "WeatherInformation" : "Loading"}
+        addEndListener={(node, done) => {
+          node.addEventListener("transitionend", done, false);
+        }}
+        classNames='fade'
+      >
+        {error ? (
+          <HandleError error={error} />
+        ) : climate ? (
+          <WeatherInformation climate={climate} />
+        ) : (
+          <Loading />
+        )}
+      </CSSTransition>
+    </SwitchTransition>
+  </main>
+);
+
 
 
