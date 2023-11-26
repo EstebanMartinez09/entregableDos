@@ -4,18 +4,22 @@ import WeatherInformation from "./components/WeatherInformation";
 import countries from "i18n-iso-countries";
 import es from "i18n-iso-countries/langs/es.json";
 import bagraunds from "./utils/backgrounds";
+import HandleError from "./components/HandleError";
 
 countries.registerLocale(es);
 
-
 function App() {
+  const [climate, setClimate] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(success);
+    navigator.geolocation.getCurrentPosition(success, handleError);
   }, []);
 
-  
-  const [climate, setClimate] = useState(null);
+  const handleError = (err) => {
+    console.warn(`ERROR(${err.code}): ${err.message}`);
+    setError(err);
+  };
 
   const success = (pos) => {
     const {
@@ -37,15 +41,19 @@ function App() {
       });
   };
 
-  
-
   return (
     <main
       className={` text-black h-screen flex items-center justify-center ${
-        bagraunds[climate?.weather[0].icon]
+        error ? 'bg-[url(/bagraunds/error.jpg)] bg-cover bg-center text-white ' : bagraunds[climate?.weather[0].icon]
       } bg-cover bg-center`}
     >
-      {climate ? <WeatherInformation climate={climate} /> : "...cargando"}
+      {error ? (
+        <HandleError error={error} />
+      ) : climate ? (
+        <WeatherInformation climate={climate} />
+      ) : (
+        "...cargando"
+      )}
     </main>
   );
 }

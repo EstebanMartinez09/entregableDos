@@ -29,7 +29,7 @@ const WeatherInformation = ({ climate }) => {
       <div className="flex flex-col gap-4 md:flex-row">
         {/* seccion: Temperatura, Ambiente y logo */}
         <section className="bg-custom-gray pt-[30px] pb-[30px] pl-[25px] pr-[25px] rounded-3xl grid grid-cols-[70%,30%] items-center gap-2">
-          <h3 className="col-span-2 " >
+          <h3 className="col-span-2 ">
             {capital(climate.weather[0].description)}
           </h3>
 
@@ -70,12 +70,17 @@ const WeatherInformation = ({ climate }) => {
             <div className="">
               <img src="/svg-parametros/presion.svg" alt="" />
             </div>
-            <span className="mx-auto font-bold">{climate.main.pressure} hPa</span>
+            <span className="mx-auto font-bold">
+              {climate.main.pressure} hPa
+            </span>
           </div>
         </section>
       </div>
 
-      <button onClick={toggleTemperature} className="select-none bg-white text-[#4580BA] font-semibold w-[151px] h-[34px] rounded-3xl hover:bg-[#4580BA] hover:text-white transform hover:scale-110 transition-transform duration-300 shadow-md">
+      <button
+        onClick={toggleTemperature}
+        className="select-none bg-white text-[#4580BA] font-semibold w-[151px] h-[34px] rounded-3xl hover:bg-[#4580BA] hover:text-white transform hover:scale-110 transition-transform duration-300 shadow-md"
+      >
         Cambiar a {unit === "C" ? "F°" : "C°"}
       </button>
     </article>
