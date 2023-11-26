@@ -7,7 +7,14 @@ import bagraunds from "./utils/backgrounds";
 
 countries.registerLocale(es);
 
+
 function App() {
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(success);
+  }, []);
+
+  
   const [climate, setClimate] = useState(null);
 
   const success = (pos) => {
@@ -30,9 +37,7 @@ function App() {
       });
   };
 
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(success);
-  }, []);
+  
 
   return (
     <main
