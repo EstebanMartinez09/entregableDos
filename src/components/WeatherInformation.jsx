@@ -21,7 +21,7 @@ const WeatherInformation = ({ climate }) => {
   };
 
   return (
-    <article className="text-center flex flex-col items-center justify-center gap-7">
+    <article className="text-center flex flex-col items-center justify-center gap-7 p-[3%]">
       <h3 className="font-bold text-xl bg-gradient-to-tr from-[#00c6ff] to-[#0072ff] text-transparent bg-clip-text">
         {climate.name}, {climate.sys.country}
       </h3>
@@ -48,7 +48,7 @@ const WeatherInformation = ({ climate }) => {
 
         {/* seccion: Detalles adicionales del clima */}
         <section className="flex bg-custom-gray  justify-center gap-4 rounded-3xl py-[10px] px-[25px] md:flex-col md:gap-[20px] md:py-[25px] md:px-[15px]">
-          <div className="flex justify-between items-center  w-[94px]">
+          <div className="flex justify-between items-center ">
             <div>
               <img src="/svg-parametros/velocidad.svg" alt="" />
             </div>
@@ -57,7 +57,7 @@ const WeatherInformation = ({ climate }) => {
 
           <div className="h-[75px] w-[3px] bg-gray-500 opacity-50 rounded-xl md:h-[3px] md:w-[90px] "></div>
 
-          <div className="flex justify-between items-center  w-[94px]">
+          <div className="flex justify-between items-center min-w-[80px] ">
             <div>
               <img src="/svg-parametros/humedad.svg" alt="" />
             </div>
@@ -66,7 +66,7 @@ const WeatherInformation = ({ climate }) => {
 
           <div className="h-[75px] w-[3px] bg-gray-500 opacity-50 rounded-xl md:h-[3px] md:w-[90px] "></div>
 
-          <div className=" flex justify-between items-center w-[94px]">
+          <div className=" flex justify-between items-center ">
             <div className="">
               <img src="/svg-parametros/presion.svg" alt="" />
             </div>
