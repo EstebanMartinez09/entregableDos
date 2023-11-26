@@ -75,7 +75,7 @@ const WeatherInformation = ({ climate }) => {
         </section>
       </div>
 
-      <button onClick={toggleTemperature} className="bg-white text-[#4580BA] font-semibold w-[151px] h-[34px] rounded-3xl hover:bg-[#4580BA] hover:text-white transform hover:scale-110 transition-transform duration-300 shadow-md">
+      <button onClick={toggleTemperature} className="select-none bg-white text-[#4580BA] font-semibold w-[151px] h-[34px] rounded-3xl hover:bg-[#4580BA] hover:text-white transform hover:scale-110 transition-transform duration-300 shadow-md">
         Cambiar a {unit === "C" ? "F°" : "C°"}
       </button>
     </article>
