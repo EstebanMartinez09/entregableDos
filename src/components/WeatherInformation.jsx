@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import "./WeatherInformation";
 
 const WeatherInformation = ({ climate }) => {
   const capital = (string) => {
@@ -6,23 +7,32 @@ const WeatherInformation = ({ climate }) => {
   };
 
   const tempC = climate.main.temp;
+
   const [temperature, setTemperature] = useState(Math.floor(tempC));
   const [unit, setUnit] = useState("C");
 
   const toggleTemperature = () => {
     if (unit === "C") {
       const tempF = tempC * (9 / 5) + 32;
-      setTemperature(Math.floor(tempF));
+      setTemperature(tempF);
       setUnit("F");
     } else {
-      setTemperature(Math.floor(tempC));
+      setTemperature(tempC);
       setUnit("C");
     }
   };
 
+  useEffect(() => {
+    setTemperature(Math.floor(climate.main.temp));
+    setUnit("C");
+  }, [climate]);
+
   return (
-    <article className="text-center flex flex-col items-center justify-center gap-7 p-[3%] select-none">
-      <h3 className="font-bold text-xl bg-gradient-to-tr from-[#00c6ff] to-[#0072ff] text-transparent bg-clip-text">
+    <article
+      style={{ transition: "1s ease" }}
+      className="text-center flex flex-col items-center justify-center gap-7 p-[3%] select-none"
+    >
+      <h3 className="title font-bold text-xl ">
         {climate.name}, {climate.sys.country}
       </h3>
 
@@ -34,7 +44,7 @@ const WeatherInformation = ({ climate }) => {
           </h3>
 
           <span className="text-[80.69px] font-light">
-            {temperature}°{unit}
+            {Math.floor(temperature)}°{unit}
           </span>
 
           <div>
@@ -55,7 +65,7 @@ const WeatherInformation = ({ climate }) => {
             <span className="mx-auto font-bold">{climate.wind.speed} m/s</span>
           </div>
 
-          <div className="h-[75px] w-[3px] bg-gray-500 opacity-50 rounded-xl md:h-[3px] md:w-[90px] "></div>
+          <div className="h-[75px] w-[4px] bg-gray-700 opacity-50 rounded-2xl md:h-[3px] md:w-[90px] "></div>
 
           <div className="flex justify-between items-center min-w-[80px] ">
             <div>
@@ -64,15 +74,13 @@ const WeatherInformation = ({ climate }) => {
             <span className="mx-auto font-bold">{climate.main.humidity} %</span>
           </div>
 
-          <div className="h-[75px] w-[3px] bg-gray-500 opacity-50 rounded-xl md:h-[3px] md:w-[90px] "></div>
+          <div className="h-[75px] w-[4px] bg-gray-700 opacity-50 rounded-2xl md:h-[3px] md:w-[90px] "></div>
 
           <div className=" flex justify-between items-center ">
             <div className="">
               <img src="/svg-parametros/presion.svg" alt="" />
             </div>
-            <span className="mx-auto font-bold">
-              {climate.main.pressure} hPa
-            </span>
+            <span className="mx-auto font-bold">{climate.main.pressure}</span>
           </div>
         </section>
       </div>
