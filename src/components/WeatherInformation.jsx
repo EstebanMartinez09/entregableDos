@@ -80,7 +80,7 @@ const WeatherInformation = ({ climate }) => {
             <div className="">
               <img src="/svg-parametros/presion.svg" alt="" />
             </div>
-            <span className="mx-auto font-bold">{climate.main.pressure}</span>
+            <span className="mx-auto font-bold">{climate.main.pressure} hPa</span>
           </div>
         </section>
       </div>
